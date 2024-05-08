@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Ramsey\Uuid\Uuid;
 
-
-class User extends Model
+class Otp extends Model
 {
     use SoftDeletes;
 
@@ -20,12 +18,8 @@ class User extends Model
 
     public $guarded = [];
 
-    protected $table = 'users';
+    protected $table = 'otps';
 
-    protected $hidden = [
-        // 'password',
-        'remember_token',
-    ];
 
     protected static function boot()
     {
@@ -34,5 +28,4 @@ class User extends Model
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
-
 }

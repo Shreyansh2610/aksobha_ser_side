@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('whatsapp_number_country_code')->nullable();
             $table->string('whatsapp_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('profile_pic');
+            // $table->string('password');
+            $table->string('profile_pic')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
@@ -28,11 +28,19 @@ return new class extends Migration
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('email');
+            $table->string('user_id');
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->timestamp('created_at');
             $table->softDeletes();
         });
+
+        // Schema::create('password_reset_tokens', function (Blueprint $table) {
+        //     $table->uuid('id')->primary();
+        //     $table->string('email');
+        //     $table->string('token');
+        //     $table->timestamp('created_at')->nullable();
+        //     $table->softDeletes();
+        // });
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->uuid('id')->primary();
