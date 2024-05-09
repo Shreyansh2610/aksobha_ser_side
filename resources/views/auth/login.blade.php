@@ -106,7 +106,7 @@
 
                 if (form.valid()) {
                     $.ajax({
-                        type: "post",
+                        type: "get",
                         url: "/sendloginotp",
                         data: form.serialize(),
                         dataType: "JSON",

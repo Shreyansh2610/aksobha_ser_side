@@ -21,6 +21,7 @@ class User extends Model
     public $guarded = [];
 
     protected $table = 'users';
+    public $timestamps = true;
 
     protected $hidden = [
         // 'password',

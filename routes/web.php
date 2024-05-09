@@ -10,6 +10,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::post('/sendloginotp',[RegisterController::class,'sendloginotp'])->name('sendloginotp');
+Route::get('/sendloginotp',[RegisterController::class,'sendloginotp'])->name('sendloginotp');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

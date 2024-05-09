@@ -19,6 +19,7 @@ class Otp extends Model
     public $guarded = [];
 
     protected $table = 'otps';
+    public $timestamps = true;
 
 
     protected static function boot()
