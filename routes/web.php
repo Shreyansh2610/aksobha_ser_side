@@ -6,10 +6,18 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
-Auth::routes();
-Route::get('/sendloginotp',[RegisterController::class,'sendloginotp'])->name('sendloginotp');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/login-using-id/{id}', function ($id) {
+    auth()->loginUsingId($id);
+
+    return redirect('home');
+});
+
+
+Route::group(['middleware' => 'guest'], function () {
+    Auth::routes();
+});
+Route::any('logout', 'Auth\LoginController@logout')->name('logout');

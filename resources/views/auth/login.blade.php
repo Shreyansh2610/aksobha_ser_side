@@ -36,7 +36,7 @@
                         <img src="{{asset('images/demo1.jpeg')}}" class="custom-img-height">
                         <div class="card-body py-3 px-5 text-center">
 
-                            <form action="/login" id="loginForm" method="post">@csrf
+                            <form action="{{ route('login') }}" id="loginForm" method="post">@csrf
                                 <div class="">
 
                                     <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
