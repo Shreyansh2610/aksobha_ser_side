@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Otp;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
-use Illuminate\Http\Request;
-
 
 class RegisterController extends Controller
 {
@@ -73,25 +68,5 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    }
-
-    public function sendloginotp(Request $request) {
-        
-        $user = User::where('email',$request->email)->first();
-        if(!empty($user)) {
-            if(!Otp::where('user_id', $user->id)->where('expires_at','>',Carbon::now()->toDateTimeString())->exists()) {
-                $otp = Otp::create([
-                    'user_id'=>$user->id,
-                    'otp' => rand(123456,999999),
-                    'expires_at' => Carbon::now()->addMinutes(10)->toDateTimeString(),
-                ]);
-                dd('otp created');
-            }
-            else {
-                dd('otp not expired');
-            }
-        } else {
-            dd('user message not exists');
-        }
     }
 }
