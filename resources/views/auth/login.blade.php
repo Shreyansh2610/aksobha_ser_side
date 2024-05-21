@@ -28,7 +28,7 @@
 @section('content')
 
 
-    <section class="vh-100 bg-success d-flex justify-content-center align-items-center">
+    <section class="vh-100 gradient-custom d-flex justify-content-center align-items-center">
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-12 col-md-8 col-lg-7 col-xl-5">
