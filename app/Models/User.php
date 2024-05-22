@@ -18,7 +18,7 @@ class User extends AuthenticatableUser implements CanResetPasswordContract
     protected $keyType = 'string';
     public $incrementing = false;
     protected $table = 'users';
-    protected $fillable = ['name', 'email'];
+    protected $guard = [];
     public $timestamps = true;
 
     protected $hidden = [
