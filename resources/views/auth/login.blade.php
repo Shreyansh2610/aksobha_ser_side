@@ -3,82 +3,90 @@
 @section('title', 'Login page')
 {{-- Title --}}
 @section('panels-head')
+<link rel="stylesheet" href="/assets/vendor/css/pages/page-auth.css">
+
     <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #9ac069;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #9ac069, #9ac069);
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #9ac069, #9ac069)
+        body {
+            background: url("/assets/img/pages/auth-background.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
         }
-        @media(max-width:576px) {
-            .custom-img-height {
-                height: 350px;
-            }
-        }
-            .custom-img-height {
-                height: 375px;
+        @media(max-width:950px) {
+            body {
+                background: url("/assets/img/pages/auth-background-1.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
             }
 
+        }
     </style>
 @endsection
 @section('content')
 
 
-    <section class="vh-100 gradient-custom d-flex justify-content-center align-items-center">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-8 col-lg-7 col-xl-5">
-                    <div class="card vh-100 bg-white text-dark" style="border-radius: 5px;">
-                        <img src="{{asset('images/demo1.jpeg')}}" class="custom-img-height">
-                        <div class="card-body py-3 px-5 text-center">
 
-                            <form action="{{ route('login') }}" id="loginForm" method="post">@csrf
-                                <div class="">
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner py-4">
 
-                                    <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                                    <p class="text-dark-50 mb-2">Please enter your email and Password!</p>
-
-                                    <div class="form-outline form-dark mb-3">
-                                        <input type="text" id="email" name="email"
-                                            class="form-control border border-success form-control-lg"  placeholder="Email"/>
-                                        {{-- <label class="form-label" for="email">Email</label> --}}
-                                    </div>
-                                    {{-- <div class="form-outline form-dark mb-4">
-                                        <button type="button" id="sendOtp" class="btn btn-outline-primary">Send
-                                            OTP</button>
-                                    </div> --}}
-
-                                    <div class="form-outline form-dark mb-3">
-                                        <input type="password" id="password" name="password"
-                                            class="form-control border-success border form-control-lg" placeholder="Password"/>
-                                        {{-- <label class="form-label" for="password">Password</label> --}}
-                                    </div>
-
-                                    <p class="small mb-3 pb-lg-2"><a class="text-dark-50" href="/password/reset">Forgot
-                                            password?</a></p>
-
-                                    <button data-mdb-button-init data-mdb-ripple-init
-                                        class="btn btn-outline-success btn-lg px-5 mb-2" type="submit">Login</button>
-                                </div>
-
-                                <div>
-                                    <p class="mb-2">Don't have an account? <a href="{{route('register')}}"
-                                            class="text-dark-50 fw-bold">Sign Up</a>
-                                    </p>
-                                </div>
-                            </form>
+                <!-- Register -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="justify-content-center">
+                            <a href="/login" class="gap-2">
+                                <span class="">
+                                    <img src="https://aksobha.com/cdn/shop/files/aksobha-logo_420x.png" alt="{{env('APP_NAME')}}" class="w-100" srcset="">
+                                </span>
+                            </a>
                         </div>
+                        <!-- /Logo -->
+                        <h4 class="mb-2 mt-3">Welcome to {{env('APP_NAME')}}! 👋</h4>
+                        <p class="mb-4">Please sign-in to your account and start the adventure</p>
+
+                        <form id="formAuthentication" class="mb-3"
+                            action="/login"
+                            method="POST">@csrf
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email" autofocus>
+                            </div>
+                            <div class="mb-3 form-password-toggle">
+                                <div class="d-flex justify-content-between">
+                                    <label class="form-label" for="password">Password</label>
+                                    <a href="/password/reset">
+                                        <small>Forgot Password?</small>
+                                    </a>
+                                </div>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="password" class="form-control" name="password"
+                                        placeholder="Enter password"
+                                        aria-describedby="password" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
+                            </div>
+                        </form>
+
+                        <p class="text-center">
+                            <span>New on our platform?</span>
+                            <a href="/register">
+                                <span>Create an account</span>
+                            </a>
+                        </p>
                     </div>
                 </div>
+                <!-- /Register -->
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 @section('panels-script')
+    <script src="/assets/js/pages-auth.js"></script>
+
     <script>
         $(document).ready(function() {
 
