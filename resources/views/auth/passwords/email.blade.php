@@ -44,9 +44,9 @@
                         <h4 class="mb-2 mt-4">Forgot Password? 🔒</h4>
                         <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
                         <form id="formAuthentication" class="mb-3"
-                            action="/password/reset"
+                            action="{{ route('password.email') }}"
                             method="POST">
-                            <div class="mb-3">
+                            <div class="mb-3">@csrf
                                 <label for="email" class="form-label">Email</label>
                                 <input type="text" class="form-control" id="email" name="email"
                                     placeholder="Enter your email" autofocus>
@@ -54,7 +54,7 @@
                             <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
                         </form>
                         <div class="text-center">
-                            <a href="auth-login-basic.html" class="d-flex align-items-center justify-content-center">
+                            <a href="/login" class="d-flex align-items-center justify-content-center">
                                 <i class="bx bx-chevron-left scaleX-n1-rtl"></i>
                                 Back to login
                             </a>
