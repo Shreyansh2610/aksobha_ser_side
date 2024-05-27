@@ -83,13 +83,21 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('panels-script')
     <script src="/assets/js/pages-auth.js"></script>
 
     <script>
+        var error = {{session('error')}}
         $(document).ready(function() {
 
+            console.log(error);
+            if(error!=null)
+            {
+                toastr.error('',error);
+
+            }
         });
     </script>
 @endsection

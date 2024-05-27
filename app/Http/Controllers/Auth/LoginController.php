@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class LoginController extends Controller
 {
@@ -36,4 +42,33 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'username' => 'required|string',
+        'password' => 'required|string',
+    ]);
+
+    // Attempt to find the user by username
+    $user = User::where('username', $request->username)->first();
+
+    // Check if the user exists
+    if (!$user) {
+        return redirect()->with(['error' => 'Invalid credentials']);
+    }
+
+    // Check if the password is correct
+    if (Hash::check($request->password, $user->password)) {
+        // Authentication successful, login the user
+        Auth::login($user);
+
+        // Redirect to the desired route
+        return redirect()->intended('/');
+    }
+
+    // Authentication failed, return an error response
+    return redirect('/login')->with(['error' => 'Invalid credentials']);
+}
 }

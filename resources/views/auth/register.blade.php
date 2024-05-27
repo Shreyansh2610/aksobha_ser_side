@@ -58,15 +58,40 @@
 
     <meta name="facebook-domain-verification" content="wcrurrcwrh6i3eyqrw6w3u3q0iv2im" />
     <script src="/registerPage/index.js"></script>
-
+    <style>
+        .razorpay-payment-button {
+            align-items: center;
+            background: #FFFFFF;
+            border: 0 solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-sizing: border-box;
+            color: #1A202C;
+            display: inline-flex;
+            font-family: Inter, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            height: 40px;
+            justify-content: center;
+            line-height: 24px;
+            overflow-wrap: break-word;
+            padding: 10px 15px;
+            text-decoration: none;
+            width: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+    </style>
 </head>
 
 <body class="home">
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center justify-content-between my-1 px-4">
             <h1 class="logo">
-                <a href="/"><img loading="lazy" src="/registerPage/Images/aksobha-logo_475x.avif"
-                        alt="Logo" width="250px" height="60px" /></a>
+                <a href="/"><img loading="lazy" src="/registerPage/Images/aksobha-logo_475x.avif" alt="Logo"
+                        width="250px" height="60px" /></a>
             </h1>
 
             <nav id="navbar" class="navbar">
@@ -84,8 +109,7 @@
                         <a class="nav-link scrollto menu-btn" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="nav-link scrollto register-now register-now-track-btn"
-                            href="#register_form">Register
+                        <a class="nav-link scrollto register-now register-now-track-btn" href="#register_form">Register
                             Now</a>
                     </li>
                 </ul>
@@ -193,7 +217,7 @@
         var videoContainer = document.getElementById('videoContainer');
         var videoIframe = document.getElementById('videoIframe');
         var videoUrl =
-        "https://www.youtube.com/embed/h1RZ0luNIBw"; // Replace VIDEO_ID with your YouTube video ID
+            "https://www.youtube.com/embed/h1RZ0luNIBw"; // Replace VIDEO_ID with your YouTube video ID
 
         videoIframe.src = videoUrl + "?autoplay=1"; // Adding autoplay parameter
         videoContainer.style.display = 'block'; // Show the video container
@@ -301,7 +325,7 @@
                                 <div class="stdate">Timings</div>
                                 <div class="fulldate">8 to 9:15 AM (IST) <br /></div>
                             </div>
-
+                            {{-- @dd($workshop) --}}
                             <div class="item date_time">
                                 <img loading="lazy"
                                     src="https://heal-satvicmovement-org.b-cdn.net/resources/img/Icons/global_1.webp"
@@ -1652,7 +1676,7 @@
                                 <input type="hidden" name="razorpay_order_id" id="razorpay_order_id" />
                             </form>
                             <div class="form_block">
-                                <form>
+                                <form action="{{ route('register') }}" method="POST">@csrf
                                     <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id" />
                                     <input type="hidden" name="razorpay_signature" id="razorpay_signature" />
                                     <input type="hidden" name="utm_source" id="utm_source" value="" />
@@ -1674,7 +1698,7 @@
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0">
                                             <label class="d-none">Name</label>
                                             <input type="text" class="form-control" placeholder="Name*"
-                                                name="reg-name" required id="name" autocomplete="off" />
+                                                name="reg_name" required id="name" autocomplete="off" />
                                             <div id="name_error"></div>
                                         </div>
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0">
@@ -1935,7 +1959,7 @@
                                             </select>
                                             <div class="d-block w-100">
                                                 <input type="text" class="form-control phone"
-                                                    placeholder="Whatsapp Number*" name="reg-mob" required
+                                                    placeholder="Whatsapp Number*" name="reg_mob" required
                                                     id="phone" autocomplete="off" />
                                                 <div class="mob_code d-none">
                                                     (People outside India, please add your ISD code)
@@ -1946,7 +1970,7 @@
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0 city_div">
                                             <label class="d-none">City</label>
                                             <input type="text" class="form-control" placeholder="City*"
-                                                name="reg-city" required id="city" autocomplete="off" />
+                                                name="reg_city" required id="city" autocomplete="off" />
                                             <div id="city_error"></div>
                                         </div>
                                     </div>
@@ -1982,7 +2006,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Thyroid imbalance" id="Thyroid-imbalance"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Thyroid imbalance">
                                                         Thyroid imbalance
                                                     </label>
@@ -1991,7 +2015,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Excess weight" id="Excess-weight"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Excess weight">
                                                         Excess weight
                                                     </label>
@@ -1999,7 +2023,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="High BP" id="High-BP" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="High BP">
                                                         High BP
                                                     </label>
@@ -2008,7 +2032,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Diabetes type 2" id="Diabetes-type-2"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Diabetes type 2">
                                                         Diabetes type 2
                                                     </label>
@@ -2016,7 +2040,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="PCOD" id="PCOD" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="PCOD">
                                                         PCOD
                                                     </label>
@@ -2025,7 +2049,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Asthma or sinusitis" id="Asthma-or-sinusitis"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Asthma or sinusitis">
                                                         Asthma or sinusitis
                                                     </label>
@@ -2034,7 +2058,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Acidity or constipation" id="Acidity-or-constipation"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0"
                                                         for="Acidity or constipation">
                                                         Acidity or constipation
@@ -2044,7 +2068,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Skin problems" id="Skin-problems"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Skin problems">
                                                         Skin problems
                                                     </label>
@@ -2052,7 +2076,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Fatty Liver" id="Fatty-Liver" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Fatty Liver">
                                                         Fatty Liver
                                                     </label>
@@ -2061,7 +2085,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="High cholesterol" id="High-cholesterol"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="High cholesterol">
                                                         High cholesterol
                                                     </label>
@@ -2070,7 +2094,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Diabetes type 1" id="Diabetes-type-1"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Diabetes type 1">
                                                         Diabetes type 1
                                                     </label>
@@ -2078,7 +2102,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Vitiligo" id="Vitiligo" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Vitiligo">
                                                         Vitiligo
                                                     </label>
@@ -2086,7 +2110,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="IBS" id="IBS" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="IBS">
                                                         IBS
                                                     </label>
@@ -2094,7 +2118,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="CKD" id="CKD" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="CKD">
                                                         CKD
                                                     </label>
@@ -2103,7 +2127,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Rheumatoid arthritis" id="Rheumatoid-arthritis"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Rheumatoid arthritis">
                                                         Rheumatoid arthritis
                                                     </label>
@@ -2112,7 +2136,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Ankylosing spondylosis" id="Ankylosing-spondylosis"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0"
                                                         for="Ankylosing spondylosis">
                                                         Ankylosing spondylosis
@@ -2121,7 +2145,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Osteoporosis" id="Osteoporosis" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Osteoporosis">
                                                         Osteoporosis
                                                     </label>
@@ -2130,7 +2154,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Muscular dystrophy" id="Muscular-dystrophy"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Muscular dystrophy">
                                                         Muscular dystrophy
                                                     </label>
@@ -2138,7 +2162,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Alopecia" id="Alopecia" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Alopecia">
                                                         Alopecia
                                                     </label>
@@ -2147,7 +2171,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Liver cirrohsis" id="Liver-cirrohsis"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Liver cirrohsis">
                                                         Liver cirrohsis
                                                     </label>
@@ -2156,7 +2180,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Hashimoto's thyroid" id="Hashimoto's-thyroid"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Hashimoto's thyroid">
                                                         Hashimoto's thyroid
                                                     </label>
@@ -2164,7 +2188,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Cancer" id="Cancer" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Cancer">
                                                         Cancer
                                                     </label>
@@ -2172,7 +2196,7 @@
                                                 <div class="d-flex flex-row w-100" style="margin-left: 41px">
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Depression" id="Depression" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Depression">
                                                         Depression
                                                     </label>
@@ -2181,7 +2205,7 @@
                                                     <input class="form-check-input reason_check" type="checkbox"
                                                         value="Neurological/Psychiatric disorder"
                                                         id="Neurological/Psychiatric-disorder" style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0"
                                                         for="Neurological/Psychiatric disorder">
                                                         Neurological/Psychiatric disorder
@@ -2191,13 +2215,13 @@
                                                     <input class="form-check-input reason_check_other"
                                                         type="checkbox" value="Other" id="Other"
                                                         style="width: 15px"
-                                                        name="reg-taking-medication[]" />&nbsp;&nbsp;
+                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Other">
                                                         Other
                                                     </label>
                                                 </div>
                                                 <input type="text" class="form-control d-none"
-                                                    name="other_reason" id="other_reason" required />
+                                                    name="other_reason" id="other_reason" />
                                                 <div class="check_error" id="other_check_error"></div>
                                             </div>
                                         </div>
@@ -2236,7 +2260,7 @@
                                         <div class="check_error" id="waiver_checkbox_reason_error"></div>
                                         <span class="waiver_check_span">
                                             <input type="checkbox" class="form-check-input"
-                                                name="reg-accept-waiver-actions[]"
+                                                name="reg_accept_waiver_actions[]"
                                                 value="I agree and accept the terms and conditions"
                                                 id="waiver_checkbox_second" />
                                             I agree and accept the
@@ -2244,11 +2268,17 @@
                                         </span>
                                         <div class="check_error" id="waiver_check_error"></div>
                                     </div>
-                                    <button id="pay_button" class="btn-get-started">
+                                    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="99000"
+                                        data-buttontext="Pay Now" data-name="{{ env('APP_NAME') }}" data-description="Razorpay payment"
+                                        data-image="/images/logo-icon.png" data-prefill.name="ABC" data-prefill.email="abc@gmail.com"
+                                        data-theme.color="#6aa84f">
+                                        data - buttonstyle = ""
+                                    </script>
+                                    {{-- <button id="pay_button" type="submit" class="btn-get-started">
                                         Pay Now<img loading="lazy" class="btn_arrow"
                                             src="https://heal-satvicmovement-org.b-cdn.net/resources/img/btn-arrow-brown.png"
                                             alt="arrow" width="20" height="17" />
-                                    </button>
+                                    </button> --}}
                                     <div class="contribution mobile_display_none">
                                         Contribution: ₹ 990
                                     </div>
@@ -2271,7 +2301,7 @@
                             <span class="date-and-time"><img loading="lazy"
                                     src="https://heal-satvicmovement-org.b-cdn.net/resources/img/rupee.png"
                                     alt="Date" width="100" height="100" />Contribution: Rs: 990</span>
-                            <a href="index.html#register_form"
+                            <a href="#register_form"
                                 class="btn-get-started scrollto right_register register-now-track-btn"
                                 id="register_right_button">Register<img loading="lazy" class="btn_arrow"
                                     id="right_register_arrow"
@@ -2299,7 +2329,7 @@
                         <div class="register_mobile" style="display: none">
                             <div class="register_mobile_heading">
                                 <h3>Heal<br />Yourself Challenge</h3>
-                                <a href="index.html#register_form"
+                                <a href="#register_form"
                                     class="btn-get-started scrollto right_register_text">Register</a>
                             </div>
                             <div class="register_mobile_detail">
@@ -2377,12 +2407,12 @@
             'UCONTENT': ''
         });
         /*clevertap.event.push("page_visit", {
-     		'workshop_name': 'Heal Yourself Challenge',
-    		'activity_code': 'page_visit',
-    		'current_url_path': '/',
-    		'current_url_protocol': 'URL_PREFIX',
-    		'current_domain':'heal.satvicmovement.org'
-    	});*/
+         		'workshop_name': 'Heal Yourself Challenge',
+        		'activity_code': 'page_visit',
+        		'current_url_path': '/',
+        		'current_url_protocol': 'URL_PREFIX',
+        		'current_domain':'heal.satvicmovement.org'
+        	});*/
         $(".register-now-track-btn").on("click", function() {
             const eventName = "register_click";
             mixpanel.track(eventName, {
@@ -2419,13 +2449,13 @@
                     'current_domain': 'heal.satvicmovement.org'
                 });
                 /*clevertap.event.push(eventName, {
-    	   			'workshop_name': 'Heal Yourself Challenge',
-    				'activity_code': 'accepted_terms',
-    				'source_page' : source_page,
-    				'current_url_path': '/',
-    				'current_url_protocol': 'URL_PREFIX',
-    				'current_domain':'heal.satvicmovement.org'
-    	  		});*/
+        	   			'workshop_name': 'Heal Yourself Challenge',
+        				'activity_code': 'accepted_terms',
+        				'source_page' : source_page,
+        				'current_url_path': '/',
+        				'current_url_protocol': 'URL_PREFIX',
+        				'current_domain':'heal.satvicmovement.org'
+        	  		});*/
             }
         });
 
@@ -2440,13 +2470,13 @@
                 'current_domain': 'heal.satvicmovement.org'
             });
             /*clevertap.event.push(eventName, {
-       		'workshop_name': 'Heal Yourself Challenge',
-    		'activity_code': 'start_typing',
-    		'source_page' : source_page,
-    		'current_url_path': '/',
-    		'current_url_protocol': 'URL_PREFIX',
-    		'current_domain':'heal.satvicmovement.org'
-      	});*/
+           		'workshop_name': 'Heal Yourself Challenge',
+        		'activity_code': 'start_typing',
+        		'source_page' : source_page,
+        		'current_url_path': '/',
+        		'current_url_protocol': 'URL_PREFIX',
+        		'current_domain':'heal.satvicmovement.org'
+          	});*/
         });
         if ('home' == 'thankyou') {
             mixpanel.track('thankyou_page', {
@@ -2458,13 +2488,13 @@
                 'current_domain': 'heal.satvicmovement.org'
             });
             /*clevertap.event.push('thankyou_page', {
-       		'workshop_name': 'Heal Yourself Challenge',
-    		'activity_code': 'thankyou_page',
-    		'source_page' : source_page,
-    		'current_url_path': '/',
-    		'current_url_protocol': 'URL_PREFIX',
-    		'current_domain':'heal.satvicmovement.org'
-      	});*/
+           		'workshop_name': 'Heal Yourself Challenge',
+        		'activity_code': 'thankyou_page',
+        		'source_page' : source_page,
+        		'current_url_path': '/',
+        		'current_url_protocol': 'URL_PREFIX',
+        		'current_domain':'heal.satvicmovement.org'
+          	});*/
         }
         $(".accordion-button").on("click", function() {
             const eventName = "faq_expand";
