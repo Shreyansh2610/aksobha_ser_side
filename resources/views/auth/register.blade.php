@@ -1696,6 +1696,7 @@
 
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0">
+                                            <input type="hidden" name="workshop_id" value="{{optional($workshop)->id}}">
                                             <label class="d-none">Name</label>
                                             <input type="text" class="form-control" placeholder="Name*"
                                                 name="reg_name" required id="name" autocomplete="off" />
@@ -1704,7 +1705,7 @@
                                         <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0">
                                             <label class="d-none">Email</label>
                                             <input type="email" class="form-control" placeholder="Email*"
-                                                name="reg-email" required id="email" autocomplete="off" />
+                                                name="email" required id="email" autocomplete="off" />
                                             <div id="email_error"></div>
                                         </div>
                                     </div>
@@ -2215,13 +2216,13 @@
                                                     <input class="form-check-input reason_check_other"
                                                         type="checkbox" value="Other" id="Other"
                                                         style="width: 15px"
-                                                        name="reg_taking_medication[]" />&nbsp;&nbsp;
+                                                         />&nbsp;&nbsp;
                                                     <label class="form-check-label ps-0" for="Other">
                                                         Other
                                                     </label>
                                                 </div>
                                                 <input type="text" class="form-control d-none"
-                                                    name="other_reason" id="other_reason" />
+                                                    name="reg_taking_medication['other']" id="other_reason" />
                                                 <div class="check_error" id="other_check_error"></div>
                                             </div>
                                         </div>
@@ -2253,7 +2254,7 @@
                                         <span class="waiver_check_span">
                                             <input type="checkbox" class="form-check-input"
                                                 value="I confirm that I am not pregnant, breastfeeing, a child below age 14, or severely underweight."
-                                                id="waiver_checkbox_reason" />
+                                                id="waiver_checkbox_reason" name="reg_accept_waiver_actions[]" />
                                             I confirm that I am not pregnant, breastfeeing, a child
                                             below age 14, or severely underweight.
                                         </span>

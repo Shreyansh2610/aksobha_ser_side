@@ -15,7 +15,7 @@ class Workshop extends Model
     protected $keyType = 'string';
     public $incrementing = false;
     protected $table = 'workshops';
-    protected $guard = [];
+    public $guarded = [];
     public $timestamps = true;
 
     protected $hidden = [

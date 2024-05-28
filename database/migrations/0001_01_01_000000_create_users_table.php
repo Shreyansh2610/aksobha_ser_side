@@ -22,6 +22,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('profile_pic')->nullable();
+            $table->string('taking_medicine')->nullable();
+            $table->string('city');
+            $table->longText('taking_medication');
+            $table->longText('accept_waiver_actions');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

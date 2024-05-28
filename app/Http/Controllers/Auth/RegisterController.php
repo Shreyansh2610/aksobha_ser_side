@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\UserPayment;
 use App\Models\Workshop;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -47,36 +49,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
-    protected function create(array $data)
-    {
-        dd('Re');
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
 
     public function showRegistrationForm(){
         $workshop = Workshop::latest()->first();
@@ -84,18 +56,18 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request) {
-        dd($request->all());
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'reg_name' => 'required|string|max:255',
             'country_code' => 'required|string|max:255',
-            'whatsapp' => 'required|string|max:15',
+            // 'whatsapp' => 'required|string|max:15',
             'email' => 'required|string|email|max:255',
             'razorpay_payment_id' => 'required',
             'reg_mob' => 'required|max:10',
             'reg_city' => 'required|max:50',
             'take_medicine' => 'required',
-            'reg-taking-medication' => 'required',
-            'reg-accept-waiver-actions' => 'required',
+            // 'reg_taking_medication' => 'required',
+            'reg_accept_waiver_actions' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -110,27 +82,33 @@ class RegisterController extends Controller
             Mail::to($user->email)->send(new \App\Mail\ExistingUserPurchase($user));
         } else {
             // Create a new user
-            $password = str_random(8);
+            $password = str_replace(' ','',$request->reg_name).Carbon::now()->format('Ymd');
             $user = User::create([
-                'name' => $request->name,
-                'whatsapp' => $request->whatsapp,
+                'name' => $request->reg_name,
                 'email' => $request->email,
+                'whatsapp_number_country_code' => $request->country_code,
+                'whatsapp_number' => $request->reg_mob,
+                'taking_medicine' => $request->take_medicine,
+                'taking_medication' => !empty($request->reg_taking_medication)?json_encode($request->reg_taking_medication): null,
+                'accept_waiver_actions' => !empty($request->reg_accept_waiver_actions)?json_encode($request->reg_accept_waiver_actions): null,
                 'password' => bcrypt($password), // Generate a random password
+                'city' => $request->reg_city,
             ]);
 
             // Send email to new user with purchase info and password
-            Mail::to($user->email)->send(new NewUserPurchase($user));
+            Mail::to($user->email)->send(new NewUserPurchase($user,$password));
         }
 
         // Handle the payment response from Razorpay
         $razorpayPaymentId = $request->input('razorpay_payment_id');
 
         if ($razorpayPaymentId) {
-            // Logic to verify the payment using Razorpay API
-            // (e.g., verify signature, fetch payment details, etc.)
-
-            // Assuming verification is successful, redirect to a success page
-            return redirect()->route('register.success');
+            UserPayment::create([
+                'user_id' => $user->id,
+                'workshop_id' => $request->workshop_id,
+                'payment_id' => $razorpayPaymentId,
+            ]);
+            return redirect()->route('login');
         }
 
         // Redirect back with an error message if payment verification fails

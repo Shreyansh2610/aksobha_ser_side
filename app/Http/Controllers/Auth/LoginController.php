@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -47,16 +47,16 @@ class LoginController extends Controller
 {
     // Validate the request
     $request->validate([
-        'username' => 'required|string',
+        'email' => 'required|string',
         'password' => 'required|string',
     ]);
 
     // Attempt to find the user by username
-    $user = User::where('username', $request->username)->first();
-
+    $user = User::where('email', $request->email)->first();
+    // dd($user);
     // Check if the user exists
     if (!$user) {
-        return redirect()->with(['error' => 'Invalid credentials']);
+        return redirect()->route('login')->with(['error' => 'Invalid credentials']);
     }
 
     // Check if the password is correct
@@ -71,4 +71,14 @@ class LoginController extends Controller
     // Authentication failed, return an error response
     return redirect('/login')->with(['error' => 'Invalid credentials']);
 }
+
+public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/login');
+    }
+
 }

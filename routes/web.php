@@ -7,9 +7,9 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return redirect('login');
-});
+// Route::get('/', function () {
+//     return redirect('login');
+// });
 
 
 Route::get('/login-using-id/{id}', function ($id) {
@@ -25,7 +25,8 @@ Route::get('/login-using-id/{id}', function ($id) {
 Route::group(['middleware' => 'guest'], function () {
     Auth::routes();
 });
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

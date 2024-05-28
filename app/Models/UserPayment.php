@@ -4,27 +4,20 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as AuthenticatableUser;
 use Ramsey\Uuid\Uuid;
 
-class User extends AuthenticatableUser implements CanResetPasswordContract
+class UserPayment extends Model
 {
-    use SoftDeletes, Notifiable,CanResetPassword;
+    use SoftDeletes;
 
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
-    protected $table = 'users';
+    protected $table = 'user_payments';
     public $guarded = [];
     public $timestamps = true;
 
-    protected $hidden = [
-        // 'password',
-        'remember_token',
-    ];
 
     protected static function boot()
     {
