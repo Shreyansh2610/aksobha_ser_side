@@ -1,7 +1,17 @@
 @extends('layouts.app')
-
+@section('panels-head')
+    <style>
+        .nav-pills .nav-link.active,
+        .nav-pills .nav-link.active:hover,
+        .nav-pills .nav-link.active:focus {
+            background-color: #198754;
+            color: #fff;
+        }
+    </style>
+@endsection
 @section('content')
-<div class="container">
+    @extends('home_layouts.navbar')
+    {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -19,5 +29,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
