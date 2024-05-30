@@ -44,10 +44,15 @@
     <!-- Vendor -->
     <link rel="stylesheet" href="/assets/vendor/libs/%40form-validation/umd/styles/index.min.css" />
     <!-- Styles -->
+    <style>
+        body {
+            background-color: rgb(194, 249, 194) !important;
+        }
+    </style>
     @yield('panels-head')
 </head>
 
-<body class="font-sans antialiased bg-white text-dark/50">
+<body class="font-sans antialiased text-dark/50">
     @yield('content')
 
 

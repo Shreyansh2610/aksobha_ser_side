@@ -4,30 +4,25 @@
         .nav-pills .nav-link.active,
         .nav-pills .nav-link.active:hover,
         .nav-pills .nav-link.active:focus {
-            background-color: #198754;
+            background-color: #509e7a;
             color: #fff;
         }
+
     </style>
+
 @endsection
 @section('content')
     @extends('home_layouts.navbar')
-    {{-- <div class="container">
+    <div class="container-fuild" style="margin-top:-90px">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+        <div class="col-md-7">
+            <div class="vh-100" style="z-index: 1;">
+                <br><br>
+                <div id="content-section" class="mt-2">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 @endsection

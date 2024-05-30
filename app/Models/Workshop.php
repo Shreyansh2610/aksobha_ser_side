@@ -30,4 +30,14 @@ class Workshop extends Model
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
+
+    /**
+     * Get all of the payment for the Workshop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payment()
+    {
+        return $this->hasMany(UserPayment::class);
+    }
 }

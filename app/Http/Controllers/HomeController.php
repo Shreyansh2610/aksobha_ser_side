@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Workshop;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,5 +27,12 @@ class HomeController extends Controller
     {
 
         return view('home');
+    }
+
+    public function previousWorkshop(Request $request) {
+        $workshop = Workshop::whereHas('payment',function($query){
+            $query->where(['user_id'=>auth()->user()->id]);
+        })->where('end_time',Carbon::now())->get();
+        dd($workshop);
     }
 }

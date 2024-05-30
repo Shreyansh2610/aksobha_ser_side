@@ -26,7 +26,7 @@ Route::group(['middleware' => 'guest'], function () {
     Auth::routes();
 });
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/previous-workshops',[HomeController::class,'previousWorkshop'])->name('previousWorkshop');
 });
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');
