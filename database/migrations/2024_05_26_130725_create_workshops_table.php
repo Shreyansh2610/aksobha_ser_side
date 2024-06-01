@@ -16,9 +16,12 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->text('workshop_title');
             $table->integer('workshop_days');
-            $table->timestamp('start_time')->nullable();
-            $table->timestamp('end_time')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->time('start_time')->format('H:i:s');
+            $table->time('end_time')->format('H:i:s');
             $table->longText('description')->nullable();
+            $table->longText('img')->nullable();
             $table->text('price');
             $table->timestamps();
             $table->SoftDeletes();

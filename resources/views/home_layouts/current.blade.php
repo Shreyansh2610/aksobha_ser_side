@@ -1,0 +1,80 @@
+<div class="overflow-scroll">
+    <div class="d-flex align-items-center justify-content-center">
+        <span class="h3" style="color: #509e7a">Current Workshops</span>
+    </div>
+    @forelse ($workshops as $workshop)
+        <div class="card mb-3" style="color: #509e7a">
+            <div class="card-header d-flex align-center"
+                style='background-image: url({{ asset("images/workshops/$workshop->img") }});background-size:cover; height:300px;'>
+                <div class="" style="display: flex;align-items:flex-end;">
+                    <div>
+                        <h4 class="card-title text-white">Ultimate Health Challenge</h4>
+                        <h5 class="card-text text-white">Start date:
+                            {{ \Carbon\Carbon::parse($workshop->start_date)->format('d-m-Y') }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-center pt-3">
+                <div class="workshop-details">
+                    <div class="border-end border-success">
+                        <i class="far fa-calendar-alt" style="color: #509e7a"></i>
+                        <p>Duration</p>
+                        <p>21 days</p>
+                    </div>
+                    <div class="border-end border-success">
+                        <i class="far fa-clock" style="color: #509e7a"></i>
+                        <p>Timing</p>
+                        <p>6 - 7 am</p>
+                    </div>
+                    <div >
+                        <i class="bx bx-volume-full" style="color: #509e7a"></i>
+                        <p>Language</p>
+                        <p>English</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center p-0">
+                <div class="d-grid">
+                    <a href="#" class="btn btn-success">Enter Workshop</a>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="color: #509e7a">
+            <div class="card-header d-flex align-center"
+                style='background-image: url({{ asset("images/workshops/$workshop->img") }});background-size:cover; height:300px;'>
+                <div class="" style="display: flex;align-items:flex-end;">
+                    <div>
+                        <h4 class="card-title text-white">Ultimate Health Challenge</h4>
+                        <h5 class="card-text text-white">Start date:
+                            {{ \Carbon\Carbon::parse($workshop->start_date)->format('d-m-Y') }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body text-center pt-3">
+                <div class="workshop-details">
+                    <div class="border-end border-success">
+                        <i class="far fa-calendar-alt" style="color: #509e7a"></i>
+                        <p>Duration</p>
+                        <p>21 days</p>
+                    </div>
+                    <div class="border-end border-success">
+                        <i class="far fa-clock" style="color: #509e7a"></i>
+                        <p>Timing</p>
+                        <p>6 - 7 am</p>
+                    </div>
+                    <div >
+                        <i class="bx bx-volume-full" style="color: #509e7a"></i>
+                        <p>Language</p>
+                        <p>English</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center p-0">
+                <div class="d-grid">
+                    <a href="#" class="btn btn-success">Enter Workshop</a>
+                </div>
+            </div>
+        </div>
+    @empty
+    @endforelse
+</div>

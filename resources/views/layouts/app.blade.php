@@ -11,7 +11,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    {{-- <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> --}}
     {{-- <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}"> --}}
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
@@ -29,8 +29,8 @@
         rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css" />
-    <link rel="stylesheet" href="//assets/vendor/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome.css" />
     <link rel="stylesheet" href="/assets/vendor/fonts/flag-icons.css" />
 
     <!-- Core CSS -->
@@ -46,7 +46,7 @@
     <!-- Styles -->
     <style>
         body {
-            background-color: rgb(194, 249, 194) !important;
+            background-color: rgb(233, 255, 233) !important;
         }
     </style>
     @yield('panels-head')
@@ -58,7 +58,7 @@
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-
+    <script src="/custom/js/script.js"></script>
     <script src="/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/assets/vendor/libs/popper/popper.js"></script>
     <script src="/assets/vendor/js/bootstrap.js"></script>
@@ -76,7 +76,7 @@
     <script src="/assets/vendor/libs/%40form-validation/umd/plugin-auto-focus/index.min.js"></script>
 
     <!-- Main JS -->
-    <script src="/assets/js/main.js"></script>
+    {{-- <script src="/assets/js/main.js"></script> --}}
     @yield('panels-script')
 </body>
 

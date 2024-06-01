@@ -17,6 +17,7 @@ return new class extends Migration
             $table->uuid('workshop_id');
             $table->longText('payment_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
