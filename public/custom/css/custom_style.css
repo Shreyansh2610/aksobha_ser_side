@@ -1,3 +1,13 @@
 .error {
     color: #DC4C64;
 }
+
+.content-height {
+    height: 750px;
+}
+
+@media (max-width:576px){
+    .content-height {
+        height: 625px;
+    }
+}
