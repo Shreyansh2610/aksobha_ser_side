@@ -40,4 +40,29 @@ class Workshop extends Model
     {
         return $this->hasMany(UserPayment::class);
     }
+
+    /**
+     * Get all of the payment for the Workshop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function resources()
+    {
+        return $this->hasMany(Resource::class);
+    }
+
+    /**
+     * Get all of the payment for the Workshop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function days()
+    {
+        return $this->hasMany(Day::class);
+    }
+
+    public function faqs()
+    {
+        return $this->hasMany(Faq::class);
+    }
 }

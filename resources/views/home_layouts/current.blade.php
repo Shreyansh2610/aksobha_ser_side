@@ -35,7 +35,7 @@
             </div>
             <div class="card-footer text-center p-0">
                 <div class="d-grid">
-                    <a href="#" class="btn btn-success">Enter Workshop</a>
+                    <a href="javascript:;" class="btn btn-success get-data" data-href="{{route('workshopShow',['id'=>$workshop->id])}}">Enter Workshop</a>
                 </div>
             </div>
         </div>
@@ -49,3 +49,7 @@
         <a href="#" class="btn btn-success">Register for workshop</a>
     </div>
 </div>
+
+<script>
+    $_homePage.currentPage();
+</script>

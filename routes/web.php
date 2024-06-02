@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WorkshopController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -30,5 +31,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/previous-workshops',[HomeController::class,'previousWorkshop'])->name('previousWorkshop');
     Route::get('/current-workshops',[HomeController::class,'currentWorkshop'])->name('currentWorkshop');
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
+    Route::get('/workshop-show/{id}',[WorkshopController::class,'workshopShow'])->name('workshopShow');
+
+    Route::get('/faq',[WorkshopController::class,'workshopFaq'])->name('faq');
 });
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');
