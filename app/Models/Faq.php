@@ -26,4 +26,24 @@ class Faq extends Model
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
+
+    /**
+     * Get the workshop that owns the Faq
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function workshop()
+    {
+        return $this->belongsTo(Workshop::class);
+    }
+
+    /**
+     * Get the user associated with the Faq
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function days()
+    {
+        return $this->hasOne(Day::class, 'workshop_id', 'workshop_id')->where('day',$this->day);
+    }
 }

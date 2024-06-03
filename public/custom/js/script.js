@@ -66,7 +66,9 @@ Workshop.prototype.layoutPage = function () {
                 $("#content-section").html(response.html);
             },
             error: function (response) {
-                console.log(response);
+                if(response.responseJSON.message=="Unauthenticated.") {
+                    window.location.reload();
+                }
             },
         });
     });

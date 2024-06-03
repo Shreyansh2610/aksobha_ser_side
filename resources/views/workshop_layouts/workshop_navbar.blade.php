@@ -17,37 +17,37 @@
 {{-- </nav> --}}
 
 
-<ul class="nav nav-pills nav-fill bg-white p-1 position-sticky top-100 start-0 translate-end" style="background-color: white;z-index:10000;">
+<ul class="nav nav-pills nav-fill bg-white p-1 position-fixed bottom-0 start-0 w-100 translate-end" style="background-color: white;z-index:10000;">
     <li class="nav-item">
-        <a class="nav-link nav-btns" href="javascript:;" data-href="/faq">
+        <a class="nav-link nav-btns" href="javascript:;" data-href="/faq/{{$workshop->id}}">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-help-circle"></i><span class="fw-bold">FAQ</span>
             </div>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-btns" href="javascript:;" data-href="/course">
+        <a class="nav-link nav-btns" href="javascript:;" data-href="/course/{{$workshop->id}}">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-trophy bx-sm"></i><span class="fw-bold">Course</span>
             </div>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-btns active" href="javascript:;" data-href="/today">
+        <a class="nav-link nav-btns active" href="javascript:;" data-href="/today/{{$workshop->id}}">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-check-circle bx-sm"></i><span class="fw-bold">Today</span>
             </div>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-btns" href="javascript:;" data-href="/resources">
+        <a class="nav-link nav-btns" href="javascript:;" data-href="/resources/{{$workshop->id}}">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-library bx-sm"></i><span class="fw-bold">Resources</span>
             </div>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-btns" href="javascript:;" data-href="/community">
+        <a class="nav-link nav-btns" href="javascript:;" data-href="/community/{{$workshop->id}}">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-smile bx-sm"></i><span class="fw-bold">Community</span>
             </div>

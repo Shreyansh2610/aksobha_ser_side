@@ -33,6 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile',[HomeController::class,'profile'])->name('profile');
     Route::get('/workshop-show/{id}',[WorkshopController::class,'workshopShow'])->name('workshopShow');
 
-    Route::get('/faq',[WorkshopController::class,'workshopFaq'])->name('faq');
+    Route::get('/faq/{id}',[WorkshopController::class,'workshopFaq'])->name('faq');
 });
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');

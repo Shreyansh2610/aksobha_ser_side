@@ -4,10 +4,13 @@
 
 .content-height {
     height: 750px;
+    margin-top: 5rem;
 }
 
 @media (max-width:576px){
     .content-height {
         height: 625px;
+        margin-top: 4.5rem;
+
     }
 }

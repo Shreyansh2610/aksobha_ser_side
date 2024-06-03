@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('workshop_id');
             $table->integer('day');
             $table->text('title');
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

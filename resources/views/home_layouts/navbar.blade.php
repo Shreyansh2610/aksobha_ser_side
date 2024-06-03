@@ -17,7 +17,7 @@
 {{-- </nav> --}}
 
 
-<ul class="nav nav-pills nav-fill bg-white p-1 position-sticky top-100 start-0 translate-end" style="background-color: white;z-index:10000;">
+<ul class="nav nav-pills nav-fill bg-white p-1 position-fixed bottom-0 start-0 w-100 translate-end" style="background-color: white;z-index:10000;">
     <li class="nav-item">
         <a class="nav-link nav-btns active" href="javascript:;" data-href="/previous-workshops">
             <div class="d-flex align-items-center flex-column flex-sm-row">

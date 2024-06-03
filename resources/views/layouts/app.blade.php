@@ -52,7 +52,7 @@
     @yield('panels-head')
 </head>
 
-<body class="font-sans antialiased text-dark/50">
+<body class="font-sans antialiased text-dark/50" style="overflow-x: hidden">
     @yield('content')
 
 
