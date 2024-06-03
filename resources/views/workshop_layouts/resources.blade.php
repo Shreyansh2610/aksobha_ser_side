@@ -3,31 +3,31 @@
         <span class="h3" style="color: #509e7a">Resources</span>
     </div>
     <br>
-    <input type="text" name="search_area" class="form-control m-2" placeholder="Enter Resources" data-href="{{route('faq',['id'=>$workshop->id])}}" value="{{optional($request)->search}}">
+    <input type="text" name="search_area_resource" class="form-control m-2" placeholder="Enter Resources" data-href="{{route('resources',['id'=>$workshop->id])}}" value="{{optional($request)->search}}">
 
     <div class="m-2">
-        @forelse ($workshop->faqs->groupBy('day') as $faqs)
-            <div class="container my-5" style="border-bottom-color: rgb(233, 255, 233);">
-                <h2>Day {{$faqs->first()->day}}</h2>
-                <h5 class="text-muted">{{$faqs->first()->days->title}}</h5>
-                <div class="accordion accordion-header-primary" id="accordion_day_{{$faqs->first()->day}}" style="background-color: rgb(233, 255, 233);">
-                    @foreach ($faqs as $faq)
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading_{{$faq->id}}">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse_{{$faq->id}}" aria-expanded="false" aria-controls="collapse_{{$faq->id}}">
-                                    {{$faq->question}}
-                                </button>
-                            </h2>
-                            <div id="collapse_{{$faq->id}}" class="accordion-collapse collapse" aria-labelledby="heading_{{$faq->id}}"
-                                data-bs-parent="#accordion_day_{{$faqs->first()->day}}">
-                                <div class="accordion-body">
-                                    {{nl2br($faq->answer)}}
-                                </div>
+        @forelse ($workshop->resources->groupBy('day') as $resources)
+            <div class="container my-5 border-bottom border-secondary" style="border-bottom-color: rgb(233, 255, 233);">
+                <h2>Day {{$resources->first()->day}}</h2>
+                <h5 class="text-muted">{{$resources->first()->days->title}}</h5>
+                {{-- <div class="row"> --}}
+                    {{-- @dd($resources) --}}
+                    @foreach ($resources as $resource)
+                        {{-- @dd($resource) --}}
+
+                        <a href='{{asset("resources/$resource->resource_link")}}' target="_blank" rel="noopener noreferrer">
+                        <div class="row mb-2">
+                            <div class="col-4">
+                                <img src='{{asset("resources/$resource->title_icon_link")}}' alt="" class="h-100 w-100 rounded">
+                            </div>
+                            <div class="col-8">
+                                <p class="h5">{{$resource->title}}</p>
+                                <p class="h6">{{$resource->description ?? ''}}</p>
                             </div>
                         </div>
+                    </a>
                     @endforeach
-                </div>
+                {{-- </div> --}}
             </div>
         @empty
             <div class="d-flex align-items-center justify-content-center">
@@ -38,7 +38,7 @@
 </div>
 
 <script>
-    $('[name="search_area"]').on('change',function() {
+    $('[name="search_area_resource"]').on('change',function() {
         setTimeout(() => {
             $.ajax({
             type: "GET",

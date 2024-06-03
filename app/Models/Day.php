@@ -29,7 +29,7 @@ class Day extends Model
 
     public function resources()
     {
-        return $this->hasMany(Day::class, 'workshop_id', 'workshop_id')->where('day',$this->day);
+        return $this->hasMany(Resource::class, 'workshop_id', 'workshop_id')->where('day',$this->day);
     }
 
 }

@@ -26,4 +26,8 @@ class Resource extends Model
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
+
+    public function days() {
+        return $this->hasOne(Day::class,'workshop_id','workshop_id')->where('day',$this->day);
+    }
 }
