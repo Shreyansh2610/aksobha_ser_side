@@ -44,22 +44,19 @@
 
 <script>
     function faqClick() {
-        console.log('faq');
-        $('#faqBtn').trigger('click');
+        $('#faqBtn').filter('.nav-btns').trigger('click');
     }
 
     function resourceClick() {
-        console.log('resource');
-        $('#faqResourceBtn').trigger('click');
+        $('#faqResourceBtn').filter('.nav-btns').trigger('click');
     }
 
     function todayClick() {
-        console.log('today');
-        $('#faqTodayBtn').trigger('click');
+        $('#faqTodayBtn').filter('.nav-btns').trigger('click');
     }
 
     function notesClick() {
-        console.log('notes');
-        $('#faqResourceBtn').trigger('click');
+        $('#faqResourceBtn').filter('.nav-btns').trigger('click');
     }
+    $_workshop.layoutPage();
 </script>
