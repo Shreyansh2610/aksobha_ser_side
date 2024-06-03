@@ -26,4 +26,10 @@ class Day extends Model
             $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
+
+    public function resources()
+    {
+        return $this->hasMany(Day::class, 'workshop_id', 'workshop_id')->where('day',$this->day);
+    }
+
 }

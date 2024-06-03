@@ -34,5 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/workshop-show/{id}',[WorkshopController::class,'workshopShow'])->name('workshopShow');
 
     Route::get('/faq/{id}',[WorkshopController::class,'workshopFaq'])->name('faq');
+    Route::get('/course/{id}',[WorkshopController::class,'workshopCourse'])->name('course');
+    Route::get('/today/{id}',[WorkshopController::class,'workshopToday'])->name('today');
+    Route::get('/resources/{id}',[WorkshopController::class,'workshopResources'])->name('resources');
 });
 Route::any('logout', 'Auth\LoginController@logout')->name('logout');

@@ -72,5 +72,20 @@ Workshop.prototype.layoutPage = function () {
             },
         });
     });
+
+
 }
 var $_workshop = new Workshop();
+
+function faqClick() {
+    $('#faqBtn').trigger('click');
+}
+function resourceClick() {
+    $('#faqResourceBtn').trigger('click');
+}
+function todayClick() {
+    $('#faqTodayBtn').trigger('click');
+}
+function notesClick() {
+    $('#faqResourceBtn').trigger('click');
+}

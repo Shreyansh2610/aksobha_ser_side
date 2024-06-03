@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('day');
             $table->text('title');
             $table->longText('description')->nullable();
+            $table->longText('image_link')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

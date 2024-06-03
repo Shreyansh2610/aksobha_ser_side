@@ -65,4 +65,6 @@ class Workshop extends Model
     {
         return $this->hasMany(Faq::class);
     }
+
+
 }
