@@ -47,10 +47,11 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link nav-btns" target="_BLANK" href="www.facebook.com">
+        <a class="nav-link nav-btns" target="_BLANK" href="https://www.facebook.com">
             <div class="d-flex align-items-center flex-column flex-sm-row">
                 <i class="bx bx-smile bx-sm"></i><span class="fw-bold">Community</span>
             </div>
         </a>
     </li>
 </ul>
+

@@ -43,6 +43,7 @@
     <link rel="stylesheet" href="/assets/vendor/libs/typeahead-js/typeahead.css" />
     <!-- Vendor -->
     <link rel="stylesheet" href="/assets/vendor/libs/%40form-validation/umd/styles/index.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Styles -->
     <style>
         body {
@@ -53,6 +54,11 @@
 </head>
 
 <body class="font-sans antialiased text-dark/50" style="overflow-x: hidden">
+    @if(!empty($workshop))
+    <span class="position-fixed top-0 start-0 m-3 text-secondary"><a class="fw-bold" href="javascript:;" onclick="window.location.reload()">
+        <i class="bi bi-house-door"></i> Home</a>
+    </span>
+    @endif
     @yield('content')
 
 

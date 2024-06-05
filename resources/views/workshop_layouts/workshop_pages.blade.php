@@ -22,20 +22,21 @@
     </style>
 @endsection
 @section('content')
+<div>
+    @extends('workshop_layouts.workshop_navbar')
+</div>
 
     <div class="container-fuild" style="margin-top:-90px">
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="vh-100" style="z-index: 1;">
+
                 <br><br>
                 <div id="content-section" class="mt-2" style="height: 90%">
 
                 </div>
             </div>
         </div>
-    </div>
-    <div>
-        @extends('workshop_layouts.workshop_navbar')
     </div>
 
 </div>

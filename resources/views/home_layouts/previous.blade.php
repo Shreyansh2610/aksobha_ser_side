@@ -46,7 +46,7 @@
     @endforelse
 
     <div class="d-grid align-items-center">
-        <a href="#" class="btn btn-success">Register for workshop</a>
+        <a href="{{route('register')}}" target="_BLANK" class="btn btn-success">Register for workshop</a>
     </div>
 </div>
 <script>

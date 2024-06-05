@@ -23,6 +23,7 @@ Route::get('/login-using-id/{id}', function ($id) {
 // Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 // Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 // Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::group(['middleware' => 'guest'], function () {
     Auth::routes();
 });
